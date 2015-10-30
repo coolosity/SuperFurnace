@@ -25,10 +25,21 @@ public class TileEntitySuperFurnace extends TileEntity implements ISidedInventor
 	
 	public int furnaceBurnTime;
 	public int currentBurnTime;
-	
 	public int furnaceCookTime;
 	
 	private String furnaceName;
+	
+	private boolean isInMultiblock;
+	
+	public void setIsInMultiblock(boolean isInMultiblock)
+	{
+		this.isInMultiblock = isInMultiblock;
+	}
+	
+	public boolean isInMultiblock()
+	{
+		return isInMultiblock;
+	}
 	
 	@Override
 	public int getSizeInventory()
@@ -130,6 +141,8 @@ public class TileEntitySuperFurnace extends TileEntity implements ISidedInventor
 		{
 			this.furnaceName = tagCompound.getString("CustomName");
 		}
+		
+		this.isInMultiblock = tagCompound.getBoolean("IsMultiblock");
 	}
 	
 	@Override
@@ -149,6 +162,7 @@ public class TileEntitySuperFurnace extends TileEntity implements ISidedInventor
 		}
 
 		tagCompound.setTag("Items", tagList);
+		tagCompound.setBoolean("IsMultiblock", isInMultiblock);
 
 		if (this.hasCustomInventoryName()) {
 			tagCompound.setString("CustomName", this.furnaceName);

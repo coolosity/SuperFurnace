@@ -6,6 +6,7 @@ public class Names {
 	{
 		public static final String SFWALL = "sfWall";
 		public static final String FURNACECORE = "furnaceCore";
+		public static final String ANIMATED = "animated";
 	}
 	
 }

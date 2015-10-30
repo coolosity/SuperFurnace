@@ -23,8 +23,10 @@ public class BlockFurnaceCore extends BlockSFTileEntity
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random random)
 	{
-		if(isMultiblockStucture(world, x-1, y-1, z-1))
+		TileEntitySuperFurnace superFurnace = (TileEntitySuperFurnace) world.getTileEntity(x, y, z);
+		if(isMultiblockStucture(world, x-1, y-1, z-1) && !superFurnace.isInMultiblock())
 		{
+			superFurnace.setIsInMultiblock(true);
 			//Turn into multiblock
 			for(int xx=0;xx<3;xx++)
 			{
